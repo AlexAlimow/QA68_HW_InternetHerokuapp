@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -26,4 +27,7 @@ public class LoginPage extends BasePage {
         return new SecurePage(driver);
     }
 
+    public SecurePage loginAsTomsmith() {
+        return login("tomsmith", "SuperSecretPassword!");
+    }
 }
