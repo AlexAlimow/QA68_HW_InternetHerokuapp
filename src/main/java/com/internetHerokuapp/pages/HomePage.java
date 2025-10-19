@@ -1,7 +1,9 @@
 package com.internetHerokuapp.pages;
 
 import com.internetHerokuapp.core.BasePage;
+import com.internetHerokuapp.pages.alertFrameWindows.FramesPage;
 import com.internetHerokuapp.pages.alertFrameWindows.WindowsPage;
+import com.internetHerokuapp.pages.dropdown.DropdownPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +16,7 @@ public class HomePage extends BasePage {
 
     @FindBy(css = ".heading")
     WebElement heading;
+
 
     public boolean isAtHomePage() {
         return heading.isDisplayed() && heading.getText().equals("Welcome to the-internet");
@@ -41,8 +44,25 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "#content > ul > li:nth-child(33) > a")
     WebElement windows;
+
     public WindowsPage OpenMultipleWindow() {
         click(windows);
         return new WindowsPage(driver);
+    }
+
+    @FindBy(css = "[href='/frames']")
+    WebElement frames;
+
+    public FramesPage selectFrames() {
+        click(frames);
+        return new FramesPage(driver);
+    }
+
+    @FindBy(css = "[href='/dropdown']")
+    WebElement dropdownLink;
+
+    public DropdownPage clickOnDropdownLink() {
+        click(dropdownLink);
+        return new DropdownPage(driver);
     }
 }

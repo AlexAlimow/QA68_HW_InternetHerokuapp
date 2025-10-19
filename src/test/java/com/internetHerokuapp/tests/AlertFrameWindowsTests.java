@@ -3,6 +3,7 @@ package com.internetHerokuapp.tests;
 import com.internetHerokuapp.core.TestBase;
 import com.internetHerokuapp.pages.HomePage;
 import com.internetHerokuapp.pages.alertFrameWindows.AlertsPage;
+import com.internetHerokuapp.pages.alertFrameWindows.FramesPage;
 import com.internetHerokuapp.pages.alertFrameWindows.WindowsPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,13 +14,14 @@ public class AlertFrameWindowsTests extends TestBase {
     HomePage homePage;
     AlertsPage alerts;
     WindowsPage windows;
-
+    FramesPage framesPage;
 
     @BeforeEach
     public void precondition() {
         homePage = new HomePage(driver);
         alerts = new AlertsPage(driver);
         windows = new WindowsPage(driver);
+        framesPage = new FramesPage(driver);
     }
 
     @Test
@@ -46,15 +48,21 @@ public class AlertFrameWindowsTests extends TestBase {
                 .sendMessageToAlert("Hello World")
                 .verifyMessage("Hello World");
     }
-// [href='/windows/new']
+
+    // [href='/windows/new']
     @Test
     public void switchToNewTabTest() {
         homePage.OpenMultipleWindow();
         windows.clickOnNewWindowButton()
                 .switchToNewTab(1)
                 .verifyNewTabTitle("New Window");
+    }
 
-
+    @Test
+    public void switchToNewFrameWindowTest() {
+        homePage.selectFrames();
+        framesPage.selectNestedFrames();
+        framesPage.handleNestedIframes();
     }
 
 

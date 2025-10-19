@@ -1,0 +1,4 @@
+11:51:33.426 [main] INFO  c.i.pages.dropdown.DropdownPage - Selected option:Option 1
+11:51:33.561 [main] INFO  c.i.pages.dropdown.DropdownPage - Verified selected option: Option 1
+11:51:33.770 [main] INFO  c.i.pages.dropdown.DropdownPage - Selected option:Option 2
+11:51:33.879 [main] INFO  c.i.pages.dropdown.DropdownPage - Verified selected option: Option 2

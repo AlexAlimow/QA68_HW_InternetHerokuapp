@@ -68,7 +68,8 @@ public class AlertsPage extends BasePage {
     }
 
     @FindBy(id = "result")
-        WebElement promptRes;
+    WebElement promptRes;
+
     public AlertsPage verifyMessage(String text) {
         Assertions.assertTrue(isContainsText(text, promptRes));
         return this;
