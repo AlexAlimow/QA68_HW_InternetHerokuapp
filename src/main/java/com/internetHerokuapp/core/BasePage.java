@@ -5,6 +5,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,6 +20,7 @@ public class BasePage {
     protected WebDriver driver;
     public static JavascriptExecutor js;
     public static SoftAssertions softly;
+    public static Actions actions;
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -28,6 +30,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
         js = (JavascriptExecutor) driver;
         softly = new SoftAssertions();
+        actions = new Actions(driver);
     }
 
     public void scrollWithJS(int x, int y) {
@@ -83,5 +86,12 @@ public class BasePage {
     public void switchToNewTabWindow(int index) {
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(index));
+    }
+    public void scrollAndWaitOfElement(WebElement element, int time, int x, int y) {
+        scrollWithJS(x, y);
+        waitOfElementVisibility(element, time);
+    }
+    public void waitOfElementVisibility(WebElement element, int time) {
+        getWait(time).until(ExpectedConditions.visibilityOf(element));
     }
 }
