@@ -19,12 +19,12 @@ public class DroppablePage extends BasePage {
         return this;
     }
 
-    @FindBy(css = "a[href='https://www.globalsqa.com/demo-site/draganddrop/']")
+    @FindBy(css = ".row.price_table_holder>div:nth-child(3) li:nth-child(6)")
     WebElement dragAndDrop;
 
     public DroppablePage clickOnDragAndDropLink() {
-        scrollAndWaitOfElement(dragAndDrop, 10, 0, 400);
+        //scrollAndWaitOfElement(dragAndDrop, 10, 0, 400);
+        click(dragAndDrop);
         return new DroppablePage(driver);
-
     }
 }

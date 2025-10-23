@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,4 +96,24 @@ public class BasePage {
     public void waitOfElementVisibility(WebElement element, int time) {
         getWait(time).until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void verifyLinks(String url) {
+        try {
+            URL linkUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) linkUrl.openConnection();
+            connection.setConnectTimeout(5000);
+            connection.connect();
+            if (connection.getResponseCode() >= 400) {
+                //System.out.println(url + " - " + connection.getResponseMessage() + " is a BROKEN link");
+                softly.fail(url + " - " + connection.getResponseMessage() + " is a BROKEN link");
+            } else {
+                //System.out.println(url + " - " + connection.getResponseMessage());
+                softly.assertThat(url + " - " + connection.getResponseMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(url + " - " + e.getMessage() + " ERROR occurred");
+        }
+        softly.assertAll();
+    }
+
 }

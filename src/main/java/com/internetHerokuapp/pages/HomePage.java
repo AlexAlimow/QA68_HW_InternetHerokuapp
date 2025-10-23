@@ -4,6 +4,7 @@ import com.internetHerokuapp.core.BasePage;
 import com.internetHerokuapp.pages.alertFrameWindows.FramesPage;
 import com.internetHerokuapp.pages.alertFrameWindows.WindowsPage;
 import com.internetHerokuapp.pages.dropdown.DropdownPage;
+import com.internetHerokuapp.pages.elements.ImagesPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -65,4 +66,20 @@ public class HomePage extends BasePage {
         click(dropdownLink);
         return new DropdownPage(driver);
     }
+
+    @FindBy(css = "a[href='/context_menu']")
+    WebElement contextMenu;
+    public ContextMenuPage contextMenuLink() {
+        click(contextMenu);
+        return new ContextMenuPage(driver);
+    }
+
+    @FindBy(css = "[href='/broken_images']")
+    WebElement brokenImages;
+
+    public ImagesPage selectImages() {
+        click(brokenImages);
+        return new ImagesPage(driver);
+    }
+
 }
