@@ -5,6 +5,8 @@ import com.internetHerokuapp.pages.alertFrameWindows.FramesPage;
 import com.internetHerokuapp.pages.alertFrameWindows.WindowsPage;
 import com.internetHerokuapp.pages.dropdown.DropdownPage;
 import com.internetHerokuapp.pages.elements.ImagesPage;
+import com.internetHerokuapp.pages.interactions.DroppablePage;
+import com.internetHerokuapp.pages.elements.FileUploadPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -82,4 +84,19 @@ public class HomePage extends BasePage {
         return new ImagesPage(driver);
     }
 
+    @FindBy(css = "[href='/drag_and_drop']")
+    WebElement dragAndDrop;
+
+    public DroppablePage selectDragAndDrop() {
+        click(dragAndDrop);
+        return new DroppablePage(driver);
+    }
+
+    @FindBy(css = "a[href='/upload']")
+    WebElement upload;
+
+    public FileUploadPage selectUpload() {
+        clickWithJS(upload,0,200);
+        return new FileUploadPage(driver);
+    }
 }
