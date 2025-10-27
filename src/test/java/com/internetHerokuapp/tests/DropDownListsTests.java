@@ -17,7 +17,7 @@ public class DropDownListsTests extends TestBase {
     }
 
     @Test
-    public void DropdownListTests() {
+    public void DropdownListTest() {
         homePage.clickOnDropdownLink();
         dropdownPage
                 .selectByVisibleText("Option 1")

@@ -3,6 +3,7 @@ package com.internetHerokuapp.core;
 import com.internetHerokuapp.pages.HomePage;
 import com.internetHerokuapp.pages.LoginPage;
 import com.internetHerokuapp.pages.SecurePage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,5 +43,10 @@ public class TestBase {
 
     protected SecurePage loginAsTomSmith() {
         return goToLoginPage().loginAsTomsmith();
+    }
+
+    @AfterEach
+    public void tearDown(){
+        driver.quit();
     }
 }

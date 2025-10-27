@@ -1,3 +1,1 @@
-17:27:40.613 [main] INFO  c.i.pages.elements.FileUploadPage - Clicked the 'Upload' button
-17:27:40.619 [main] INFO  c.i.pages.elements.FileUploadPage - Verifying that file 'cat.jpg' has been uploaded successfully
-17:27:40.741 [main] INFO  c.i.pages.elements.FileUploadPage - File 'cat.jpg' uploaded and verified successfully
+15:53:54.081 [main] INFO  c.i.pages.dropdown.DropdownPage - Verified selected option: Option 2
